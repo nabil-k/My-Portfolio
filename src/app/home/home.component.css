@@ -1,0 +1,50 @@
+.IntroContainer{
+    display: block;
+    margin: 0px;
+    height: 600px;
+    width: 100%;
+    background-repeat:no-repeat;
+    background-image: url('/assets/homeIntroBg.jpg');
+}
+
+.homeContainer{
+    display: block;
+    margin: 0px;
+    height: 600px;
+    width: 100%;
+}
+
+@keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.1);}
+    100% {transform: scale(1);}
+  }
+
+#introMsg{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 600px;
+    color: #F28A21;
+    font-size: 50px; 
+    margin: 0px;
+    animation-name: pulse;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    text-shadow: 10px 5px 20px rgba(0, 0, 0, 0.24);
+}
+
+.desc1{
+    float: left;
+    width: 50%;
+    height: 300px;
+}
+
+.desc2{
+    text-align: center;
+    vertical-align: middle;
+    font-size: 25px;
+    float:right;
+    width: 50%;
+    height: 300px;
+}
+
