@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 
 import { Http, Headers, RequestOptions } from '@angular/http';
+import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DataService {
 
-  result:any;
+  constructor(private http: Http) { }
 
-  constructor(private _http: Http) { }
-
-  getUsers() {
-    return this._http.get("/api/users")
-      .map(result => this.result = result.json().data);
+  getMessages() {
+    return this.http.get("/messages")
+      .map((result) =>{
+        // console.log(result.json());
+        return result.json();
+      });
   }
 
 }

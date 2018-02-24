@@ -7,9 +7,11 @@ import { DataService } from '../data.service';
   styleUrls: ['./contact-me.component.css']
 })
 export class ContactMeComponent implements OnInit {
-  users: Array<any>;
-  constructor(private _dataService: DataService) { 
-      this._dataService.getUsers().subscribe(res => this.users = res);
+  messages: any;
+
+  constructor(private dataService: DataService) {
+      this.dataService.getMessages()
+        .subscribe(data => this.messages = data);
   }
 
   ngOnInit() {
