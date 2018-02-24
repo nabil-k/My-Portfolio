@@ -9,6 +9,10 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
 import { AppRoutingModule } from './/app-routing.module';
 
 
+import { HttpModule } from '@angular/http';
+import { DataService } from './data.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,9 +22,10 @@ import { AppRoutingModule } from './/app-routing.module';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

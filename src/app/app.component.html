@@ -1,14 +1,26 @@
-<nav id="navBar">
-    <div id="navContent">
-        <span><img src="./assets/fox.png" width='50'/></span>
-        <span id="navTitle">Nabil's Portfolio</span>
-        <div id="navLinksDiv">
-            <span class="navLinks" routerLink="/home">Home</span>
-            <span class="navLinks" routerLink="/aboutMe">About Me</span>
-            <span class="navLinks" routerLink="/contactMe">Contact Me</span>
-        </div>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="background-color: #f28a21;">
+  <div style="display: block; margin:auto; text-align:center;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <span>
+      <img src="./assets/fox.png" width='70' />
+    </span>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" style="color:#fff">
+          <span class="navLinks hvr-grow" routerLink="/home">Home</span>
+        </a>
+        <a class="nav-item nav-link" style="color:#fff">
+          <span class="navLinks hvr-grow" routerLink="/aboutMe">About Me</span>
+        </a>
+        <a class="nav-item nav-link" style="color:#fff">
+          <span class="navLinks hvr-grow" routerLink="/contactMe">Contact Me</span>
+        </a>
+      </div>
     </div>
+  </div>
 </nav>
-
 
 <router-outlet></router-outlet>
