@@ -17,4 +17,8 @@ export class DataService {
       });
   }
 
+  sendMessages(message:string){
+    return this.http.post("/messages",message)
+  }
+
 }

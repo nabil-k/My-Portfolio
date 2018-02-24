@@ -2,9 +2,13 @@
   Email: duomaster01@gmail.com
 </p>
 
-<h1>Our MongoDB is Working!</h1>
+<input type="text" [(ngModel)]="userName">
+<input type="text" [(ngModel)]="userMsg">
+<input type="text" [(ngModel)]="date">
 
+
+<h1>User's and Their Messages</h1>
 <ul>
-  <li *ngFor="let message of messages">{{ message.name }}</li>
+  <li *ngFor="let message of messages">{{ message.name }} {{message.message}}</li>
   <p>End of Messages~</p>
 </ul>
