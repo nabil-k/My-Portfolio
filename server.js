@@ -6,7 +6,13 @@ const app = express();
 const mongoose = require('mongoose');
 // const message =  require('./schemas/message').model('Message').schema
 
-const url = 'mongodb://localhost:27017/mean';
+const url = 'mongodb://nabil:wade5693@ds147668.mlab.com:47668/my-portfolio';
+
+
+// Mongoose Setup
+mongoose.connect(url);
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
 
 // Schemas
 var messageSchema = mongoose.Schema({
@@ -16,11 +22,6 @@ var messageSchema = mongoose.Schema({
 })
 
 var Message = mongoose.model('messages', messageSchema)
-
-// Mongoose Setup
-mongoose.connect(url);
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
 
 
 db.once('open', function () {
@@ -49,6 +50,17 @@ app.get('/messages', (req, res) => {
     res.json(result)
     // console.log(result)
   });
+});
+
+app.post('/newMessages', (req,res) => {
+  var newMessage = Message(req.body);
+  newMessage.save()
+  .then(item => {
+    res.send("new messaged stored")
+  }) 
+  .catch(err =>{
+    res.status(400).send("unable to save message")
+  })
 });
 
 //Set Port

@@ -1,14 +1,15 @@
-<p>
-  Email: duomaster01@gmail.com
-</p>
+<form  (ngSubmit)="onSubmit()">
+  <input type="text" [(ngModel)]="userName" name="userName" required>
+  <input type="text" [(ngModel)]="userMsg" name="userMsg" required>
+  <input type="text" [(ngModel)]="date" name="date" required>
+  <button type="submit">Submit</button>
+</form>
 
-<input type="text" [(ngModel)]="userName">
-<input type="text" [(ngModel)]="userMsg">
-<input type="text" [(ngModel)]="date">
+
 
 
 <h1>User's and Their Messages</h1>
 <ul>
-  <li *ngFor="let message of messages">{{ message.name }} {{message.message}}</li>
+  <li *ngFor="let message of messages">Name:{{ message.name }} Message:{{message.message}} Date: {{message.date}}</li>
   <p>End of Messages~</p>
 </ul>

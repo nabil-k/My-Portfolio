@@ -18,7 +18,7 @@ export class DataService {
   }
 
   sendMessages(message:string){
-    return this.http.post("/messages",message)
+    return this.http.post("/newMessages",message)
   }
 
 }

@@ -8,23 +8,35 @@ import { NgModel } from '@angular/forms'
   styleUrls: ['./contact-me.component.css']
 })
 export class ContactMeComponent implements OnInit {
+  today = new Date();
+  dd = this.today.getDate();
+  mm = this.today.getMonth()+1; //January is 0!
+  yyyy = this.today.getFullYear();
+
+  date = this.mm +'/'+ this.dd + '/' + this.yyyy
+
+
   messages: any;
 
-  userMsg:any;
+  userMsg: any;
   userName: any;
-  date:any;
   // newMsg = {name: this.userMsg, date:this.date, message: this.userMsg }
-  newMsg:any = {name: "this.userMsg", date:"this.date", message: "this.userMsg" }
+  newMsg: any;
 
 
   constructor(private dataService: DataService) {
-      this.dataService.getMessages()
-        .subscribe(data => this.messages = data);
-      
-        this.dataService.sendMessages(this.newMsg)
-          .subscribe(message => this.messages.push(message))
-        
+    this.dataService.getMessages()
+      .subscribe(data => this.messages = data);
   }
+
+  onSubmit(){
+    this.newMsg = { name: this.userName, date: this.date, message: this.userMsg }
+    console.log(this.newMsg)
+    this.dataService.sendMessages(this.newMsg)
+      .subscribe(message => this.messages.push(message))
+    }
+
+
 
   ngOnInit() {
   }
