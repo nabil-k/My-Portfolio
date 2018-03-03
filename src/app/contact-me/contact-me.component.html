@@ -1,0 +1,18 @@
+<div id="formDiv">
+  <form (ngSubmit)="onSubmit()">
+    <input class="formInputs" type="text" [(ngModel)]="userName" name="userName" placeholder="Name" required>
+    <input class="formInputs" type="text" [(ngModel)]="userEmail" name="userEmail" placeholder="Email" required>
+    <input class="formInputs" type="text" [(ngModel)]="userPhoneNum" name="userPhoneNum" placeholder="Phone Number" required>
+    <div>
+      <span>Message</span>
+      <br/>
+      <input class="formInputs" id="messageInput" type="text" [(ngModel)]="userMsg" name="userMsg" required>
+    </div>
+    <button id="contactSubmit" class="formInputs" type="submit">Submit</button>
+  </form>
+</div>
+
+<!-- <h1>User's and Their Messages</h1>
+<ul>
+  <li *ngFor="let message of messages">Name:{{ message.name }} Message:{{message.message}} Date: {{message.date}}</li>
+</ul> -->

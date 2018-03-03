@@ -1,0 +1,32 @@
+#formDiv{
+    padding-top:5%;
+    width: 500px;
+    display:block;
+    margin: auto;
+    text-align: center;
+}
+
+.formInputs{
+    margin: 10px;
+    text-align: center;
+}
+
+#messageInput{
+    width: 100%;
+    height: 200px;
+}
+
+#contactSubmit{
+    width: 100px;
+    padding: 5px;
+    font-size: 12px;
+    background-color: #ff5050;
+    color: #ffff;
+    border: 1px solid #ff5050;
+    border-radius: 5px;
+}
+#contactSubmit:hover{
+    background-color:#c02323;
+    border-color:#c02323;
+    cursor:pointer;
+}
