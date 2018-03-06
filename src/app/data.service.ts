@@ -10,7 +10,7 @@ export class DataService {
   constructor(private http: Http) { }
 
   getMessages() {
-    return this.http.get("/messages")
+    return this.http.get("/routes/messages")
       .map((result) =>{
         // console.log(result.json());
         return result.json();
@@ -18,7 +18,7 @@ export class DataService {
   }
 
   sendMessages(message:string){
-    return this.http.post("/newMessages",message)
+    return this.http.post("/routes/newMessages",message)
   }
 
 }
