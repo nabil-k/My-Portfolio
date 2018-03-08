@@ -44,4 +44,34 @@
     margin: auto;
     padding: 10px;
     width: 1000px;
+    margin-bottom: 100px;
+}
+#footer-links-container{
+    padding: 10px;
+    text-align: center;
+}
+
+.footerLinks{
+    display: inline-block;
+    margin: 10px;
+}
+
+.footer-icons{
+    width: 80px;
+    height: 80px;
+    padding: 1px;
+    text-decoration: none;
+}
+
+.footer-icons:hover{
+    text-decoration: none;
+}
+
+footer{
+    margin-top: 100px;
+    padding: 5px;
+    width: 100%;
+    background-color:#fff;
+    border-top: 1px solid rgb(194, 194, 194);
+    color:#000;
 }

@@ -47,3 +47,24 @@
     height: 300px;
 }
 
+@media (max-width: 1448px) {
+    .desc1{
+        display:none;
+        
+    }
+    .desc2{
+        float:none;
+        display: block;
+        margin:auto;
+    }
+
+}
+
+@media (max-width: 800px) {
+    #introMsg{
+        vertical-align: auto;
+        line-height: 200px;
+        font-size: 50px;
+    }
+}
+

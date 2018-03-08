@@ -1,18 +1,24 @@
-<div id="formDiv">
-  <form (ngSubmit)="onSubmit()">
-    <input class="formInputs" type="text" [(ngModel)]="userName" name="userName" placeholder="Name">
-    <input class="formInputs" type="text" [(ngModel)]="userEmail" name="userEmail" placeholder="Email">
-    <input class="formInputs" type="text" [(ngModel)]="userPhoneNum" name="userPhoneNum" placeholder="Phone Number">
+<div class="contentContainer">
+  <div id="formDiv">
     <div>
-      <span>Message</span>
-      <br/>
-      <input class="formInputs" id="messageInput" type="text" [(ngModel)]="userMsg" name="userMsg">
+      <h2>Contact Me</h2>
+      <p>I will have replied to your messages towards the end of the week.</p>
     </div>
-    <button id="contactSubmit" class="formInputs" type="submit">Submit</button>
-  </form>
+    <form (ngSubmit)="onSubmit()">
+      <input class="formInputs" type="text" [(ngModel)]="userName" name="userName" placeholder="Name">
+      <input class="formInputs" type="text" [(ngModel)]="userEmail" name="userEmail" placeholder="Email">
+      <input class="formInputs" type="text" [(ngModel)]="userPhoneNum" name="userPhoneNum" placeholder="Phone Number">
+      <div>
+        <span>Message</span>
+        <br/>
+        <textarea id="messageInput" type="text" [(ngModel)]="userMsg" name="userMsg"></textarea>
+      </div>
+      <button id="contactSubmit" class="formInputs" type="submit">Submit</button>
+    </form>
+  </div>
 </div>
 
-<h1>User's and Their Messages</h1>
+<!-- <h1>User's and Their Messages</h1>
 <ul>
   <li *ngFor="let message of messages">Name:{{ message.name }} Message:{{message.message}} Date: {{message.date}}</li>
-</ul>
+</ul> -->
