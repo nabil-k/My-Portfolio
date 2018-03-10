@@ -21,4 +21,11 @@ export class DataService {
     return this.http.post("/routes/newMessages",message)
   }
 
+  getMasteryStats(){
+    return this.http.get('/routes/LoLMastery')
+      .map((result)=>{
+        return result.json()
+      })
+  }
+
 }

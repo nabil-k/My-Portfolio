@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 
 import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
+import { LolstatsComponent } from './lolstats/lolstats.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { DataService } from './data.service';
     AppComponent,
     HomeComponent,
     AboutMeComponent,
-    ContactMeComponent
+    ContactMeComponent,
+    LolstatsComponent
   ],
   imports: [
     BrowserModule,

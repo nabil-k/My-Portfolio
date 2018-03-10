@@ -1,0 +1,20 @@
+#aboutMeContainer{
+    width: 1250px;
+    display: block;
+    margin: auto;
+    margin: auto;
+    padding: 2%;
+}
+
+#picOfMeDiv{
+    float:left;
+    width: 50%;
+
+}
+
+#aboutMeText{
+    margin: auto;
+    float: right;
+    width: 50%;
+
+}

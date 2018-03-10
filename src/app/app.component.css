@@ -68,6 +68,8 @@
 }
 
 footer{
+    overflow: auto;
+    display:block;
     margin-top: 100px;
     padding: 5px;
     width: 100%;
