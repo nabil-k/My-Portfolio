@@ -28,4 +28,17 @@ export class DataService {
       })
   }
 
+  getSummonerData(){
+    return this.http.get('/routes/LoLSummonerInfo')
+    .map((result)=>{
+      return result.json()
+    })
+  }
+
+  getSummonerMatches(){
+    return this.http.get('/routes/LoLSummonerMatches')
+    .map((result)=>{
+      return result.json()
+    })
+  }
 }

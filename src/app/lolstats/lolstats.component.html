@@ -1,7 +1,22 @@
-<h2>Ahri</h2>
-<p>
-  Mastery Chest Granted :{{mastery.chestGranted}}
-  Mastery LvL:{{mastery.championLevel}}
-  Mastery Points: {{mastery.championPoints}}
-</p>
+<div id="SummonerInfo">
+  <span>{{summoner?.name}}</span>
+  <span>Level: {{summoner?.summonerLevel}}</span>
+  <span>Id: {{summoner?.id}}</span>
+  <span></span>
+</div>
+
+<div id="ahriInfo">
+  <h2>Ahri</h2>
+  <img src="../../assets/ahri-classic.png"/>  
+  <span>Mastery Chest Granted :{{mastery?.chestGranted}}</span>
+  <span>Mastery LvL:{{mastery?.championLevel}}</span>
+  <span>Mastery Points: {{mastery?.championPoints}}</span>
+</div>
+
+<div id="summonerMatches">
+    Total Games: {{matches?.totalGames}}
+  <div *ngFor='let games of matches'>
+    {{games?.lane}}
+  </div>
+</div>
 
