@@ -10,8 +10,10 @@ import { AppRoutingModule } from './/app-routing.module';
 import { FormsModule } from '@angular/forms';
 
 import { HttpModule } from '@angular/http';
-import { DataService } from './data.service';
+import { AuthService } from './_services/auth.service';
+import { DataService } from './_services/data.service';
 import { LolstatsComponent } from './lolstats/lolstats.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { LolstatsComponent } from './lolstats/lolstats.component';
     HomeComponent,
     AboutMeComponent,
     ContactMeComponent,
-    LolstatsComponent
+    LolstatsComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,7 @@ import { LolstatsComponent } from './lolstats/lolstats.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [DataService],
+  providers: [DataService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

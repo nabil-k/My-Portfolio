@@ -15,8 +15,11 @@
 
 <div id="summonerMatches">
     Total Games: {{matches?.totalGames}}
-  <div *ngFor='let games of matches'>
-    {{games?.lane}}
+  <div *ngFor='let game of matchesList'>
+    <span>server: {{game.platformId}}</span>
+    <span>Lane: {{game.lane}}</span>
+    <span>Season: {{game.season}}</span>
+    <span>server: {{game.platformId}}</span>
   </div>
 </div>
 
