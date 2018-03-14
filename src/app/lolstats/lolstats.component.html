@@ -1,25 +1,36 @@
-<div id="SummonerInfo">
-  <span>{{summoner?.name}}</span>
-  <span>Level: {{summoner?.summonerLevel}}</span>
-  <span>Id: {{summoner?.id}}</span>
-  <span></span>
-</div>
+<div class="contentContainer">
+  <div id="lolStatsPage">
+    <div id="SummonerInfo">
+      <div id="summonerInternalDiv1">
+        <img id="summonerIcon" src="../../assets/FoxyDuo.png" />
+      </div>
+      <div id="summonerInternalDiv2">
+        <span class="summonerStats">{{summoner?.name}}</span>
+        <br/>
+        <span class="summonerStats">Level: {{summoner?.summonerLevel}}</span>
+        <br/>
+        <span class="summonerStats">Id: {{summoner?.id}}</span>
+      </div>
+    </div>
 
-<div id="ahriInfo">
-  <h2>Ahri</h2>
-  <img src="../../assets/ahri-classic.png"/>  
-  <span>Mastery Chest Granted :{{mastery?.chestGranted}}</span>
-  <span>Mastery LvL:{{mastery?.championLevel}}</span>
-  <span>Mastery Points: {{mastery?.championPoints}}</span>
-</div>
+    <div id="ahriInfo">
+      <div id="ahriIconDiv">
+        <h2>Ahri</h2>
+        <img src="../../assets/ahri-classic.png" />
+      </div>
+      <span>Mastery Chest Granted :{{mastery?.chestGranted}}</span>
+      <span>Mastery LvL:{{mastery?.championLevel}}</span>
+      <span>Mastery Points: {{mastery?.championPoints}}</span>
+    </div>
 
-<div id="summonerMatches">
-    Total Games: {{matches?.totalGames}}
-  <div *ngFor='let game of matchesList'>
-    <span>server: {{game.platformId}}</span>
-    <span>Lane: {{game.lane}}</span>
-    <span>Season: {{game.season}}</span>
-    <span>server: {{game.platformId}}</span>
+    <div id="summonerMatches">
+      Total Games: {{matches?.totalGames}}
+      <div *ngFor='let game of matchesList'>
+        <span>server: {{game.platformId}}</span>
+        <span>Lane: {{game.lane}}</span>
+        <span>Season: {{game.season}}</span>
+        <span>server: {{game.platformId}}</span>
+      </div>
+    </div>
   </div>
 </div>
-

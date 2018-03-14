@@ -1,0 +1,45 @@
+#lolStatsPage{
+    display: block;
+    margin: auto;
+    padding: 20px;
+    width: 1250px;
+}
+#SummonerInfo{
+    width: 300px;
+    display: block;
+    margin: auto;
+    height: 150px;
+}
+
+.summonerStats{
+    float: right;
+   padding: 5px;
+}
+
+#summonerInternalDiv1{
+    width: 150px;
+    height: 150px;
+    display:block;
+    float: left;
+}
+
+#summonerInternalDiv2{
+    width: 150px;
+    height: 150px;
+    display:block;
+    float: right;
+}
+
+
+#summonerIcon{
+    display: inline-block;
+    width: 150px;
+    border: 1px solid #ffff;
+    border-radius: 100px;
+}
+
+#ahriInfo{
+    display: block;
+    margin: auto;
+    width: 1000px;
+}
