@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../_services/data.service';
-import { NgModel } from '@angular/forms'
+import { AuthService } from '../_services/auth.service';
+import { NgModel } from '@angular/forms';
+const localStorage = window.localStorage;
 
 @Component({
   selector: 'app-contact-me',
@@ -23,11 +25,19 @@ export class ContactMeComponent implements OnInit {
   userEmail:any;
   userPhoneNum:any;
   newMsg: any;
+  tokens: any;
+  token:any
+  tokenObj:any = {"newToken":localStorage.getItem('authorization')};
 
-
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private authService: AuthService) {
     this.dataService.getMessages()
-      .subscribe(data => this.messages = data);
+      .subscribe((data) => {
+        this.messages = data
+        console.log("got messages")
+      });
+      console.log(this.tokenObj)
+      this.authService.checkToken(this.tokenObj).subscribe(token => this.tokens.push(token))
+    
   }
 
   onSubmit(){

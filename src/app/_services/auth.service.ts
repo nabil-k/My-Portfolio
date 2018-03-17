@@ -13,4 +13,8 @@ export class AuthService {
     return this.http.post(baseUrl + "/routes/admin/login",credentials)
   }
 
+  checkToken(token:any){
+    return this.http.post(baseUrl + "/routes/newToken",token)
+  }
+
 }

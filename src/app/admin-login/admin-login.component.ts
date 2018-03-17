@@ -3,6 +3,7 @@ import { AuthService } from '../_services/auth.service'
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+const localStorage = window.localStorage;
 
 
 @Component({
@@ -34,6 +35,8 @@ export class AdminLoginComponent implements OnInit {
       if (this.status === "Successfully Logged In"){
         this.router.navigateByUrl('/home')
         console.log("Successfully Logged In")
+        console.log(data.json().token)
+        localStorage.setItem('authorization', data.json().token)
       }else{
         if (this.status === "invalid Email"){
           console.log("Invalid Email")

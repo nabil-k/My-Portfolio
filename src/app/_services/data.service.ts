@@ -24,21 +24,21 @@ export class DataService {
   }
 
   getMasteryStats(){
-    return this.http.get(baseUrl + '/routes/LoLMastery')
+    return this.http.get(baseUrl + '/riotApi/LoLMastery')
       .map((result)=>{
         return result.json()
       })
   }
 
   getSummonerData(){
-    return this.http.get(baseUrl + '/routes/LoLSummonerInfo')
+    return this.http.get(baseUrl + '/riotApi/LoLSummonerInfo')
     .map((result)=>{
       return result.json()
     })
   }
 
   getSummonerMatches(){
-    return this.http.get(baseUrl + '/routes/LoLSummonerMatches')
+    return this.http.get(baseUrl + '/riotApi/LoLSummonerMatches')
     .map((result)=>{
       return result.json()
     })

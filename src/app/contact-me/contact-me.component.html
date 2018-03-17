@@ -6,8 +6,8 @@
     </div>
     <form (ngSubmit)="onSubmit()">
       <input class="formInputs" type="text" [(ngModel)]="userName" name="userName" placeholder="Name">
-      <input class="formInputs" type="text" [(ngModel)]="userEmail" name="userEmail" placeholder="Email">
-      <input class="formInputs" type="text" [(ngModel)]="userPhoneNum" name="userPhoneNum" placeholder="Phone Number">
+      <input class="formInputs" type="text" [(ngModel)]="userEmail" autocomplete='email' name="userEmail" placeholder="Email">
+      <input class="formInputs" type="text" [(ngModel)]="userPhoneNum" autocomplete='tel' name="userPhoneNum" placeholder="Phone Number">
       <div>
         <span>Message</span>
         <br/>
@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<!-- <h1>User's and Their Messages</h1>
+<h1>User's and Their Messages</h1>
 <ul>
   <li *ngFor="let message of messages">Name:{{ message.name }} Message:{{message.message}} Date: {{message.date}}</li>
-</ul> -->
+</ul>
