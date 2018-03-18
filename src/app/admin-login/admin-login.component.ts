@@ -30,10 +30,9 @@ export class AdminLoginComponent implements OnInit {
     console.log(this.credentialsObj)
     this.auth.login(this.credentialsObj).subscribe((data) => {
       this.status = data.json().data
-      console.log(this.status)
 
       if (this.status === "Successfully Logged In"){
-        this.router.navigateByUrl('/home')
+        this.router.navigateByUrl('LoL-Stats')
         console.log("Successfully Logged In")
         console.log(data.json().token)
         localStorage.setItem('authorization', data.json().token)
