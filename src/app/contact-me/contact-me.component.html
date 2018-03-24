@@ -2,23 +2,33 @@
   <div id="formDiv">
     <div>
       <h2>Contact Me</h2>
-      <p>I will have replied to your messages towards the end of the week.</p>
+      <p>Want to collaborate with me? Add me on LoL or Steam? Or just ask me a question? Just contact me :P</p>
     </div>
     <form (ngSubmit)="onSubmit()">
-      <input class="formInputs" type="text" [(ngModel)]="userName" name="userName" placeholder="Name">
-      <input class="formInputs" type="text" [(ngModel)]="userEmail" autocomplete='email' name="userEmail" placeholder="Email">
-      <input class="formInputs" type="text" [(ngModel)]="userPhoneNum" autocomplete='tel' name="userPhoneNum" placeholder="Phone Number">
+      <input class="formInputs" type="text" [(ngModel)]="userName" name="userName" placeholder="Name" required>
+      <input class="formInputs" type="text" [(ngModel)]="userEmail" autocomplete='email' name="userEmail" placeholder="Email" required>
+      <input class="formInputs" type="text" [(ngModel)]="userPhoneNum" autocomplete='tel' name="userPhoneNum" placeholder="Phone Number" required>
       <div>
         <span>Message</span>
         <br/>
-        <textarea id="messageInput" type="text" [(ngModel)]="userMsg" name="userMsg"></textarea>
+        <textarea id="messageInput" type="text" [(ngModel)]="userMsg" name="userMsg" required></textarea>
       </div>
-      <button id="contactSubmit" class="formInputs" type="submit">Submit</button>
+      <input type="submit" id="contactSubmit" class="formInputs">
     </form>
+    <div *ngIf="userSubmitted">
+      <div *ngIf="messageSent" id="successAlert">
+        <span style="padding: 5px;">Success: </span>
+        <span>Your Message has been sent to Nabil</span>
+      </div>
+      <div *ngIf="!messageSent" id="failureAlert">
+        <span style="padding: 5px;">Error: </span>
+        <span>Please fill in all input fields >.<</span>
+      </div>
+    </div>
   </div>
 </div>
 
-<h1>User's and Their Messages</h1>
+<!-- <h1>User's and Their Messages</h1>
 <ul>
   <li *ngFor="let message of messages">Name:{{ message.name }} Message:{{message.message}} Date: {{message.date}}</li>
-</ul>
+</ul> -->

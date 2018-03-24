@@ -23,6 +23,20 @@ export class DataService {
     return this.http.post(baseUrl + "/routes/newMessages",message)
   }
 
+  getBlogPosts(){
+    return this.http.get(baseUrl + "/routes/blogPosts")
+    .map((result) =>{
+      return result.json();
+    });
+  }
+
+  postComment(comment:string){
+    return this.http.put(baseUrl+"/routes/postComment", comment)
+    .map((result)=>{
+      return result.json();
+    })
+  }
+
   getMasteryStats(){
     return this.http.get(baseUrl + '/riotApi/LoLMastery')
       .map((result)=>{

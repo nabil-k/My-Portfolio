@@ -1,0 +1,47 @@
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+    <!-- Post Content Column -->
+    <div class="col-lg">
+      <div *ngFor="let blogPost of blogPosts">
+        <!-- Title -->
+        <h1 class="mt-4">{{blogPost.title}}</h1>
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="#">{{blogPost.author}}</a>
+        </p>
+
+        <hr>
+        <!-- Date/Time -->
+        <p>{{blogPost.created}}</p>
+        <hr>
+        <!-- Post Content -->
+        <p>{{blogPost.content}}</p>
+        <hr>
+        <!-- Comments Form -->
+        <div class="card my-4">
+          <h5 class="card-header">Leave a Comment:</h5>
+          <div class="card-body">
+            <form (ngSubmit)="submitComment(blogPost._id)">
+              <div class="form-group">
+                <textarea [(ngModel)]="userComment" name="userComment" class="form-control" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+        <!-- Single Comment -->
+        <div class="media mb-4">
+          <!-- <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""> -->
+          <div class="media-body">
+            <div *ngFor="let comments of blogPost.comments">
+              <h5 class="mt-0">Anonymous</h5>
+              <p>{{comments.comment}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

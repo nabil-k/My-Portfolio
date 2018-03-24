@@ -18,6 +18,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 
 import { LolstatsComponent } from './lolstats/lolstats.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { BlogComponent } from './blog/blog.component';
+import { AdminBlogComponent } from './admin-blog/admin-blog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     AboutMeComponent,
     ContactMeComponent,
     LolstatsComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    AdminDashboardComponent,
+    BlogComponent,
+    AdminBlogComponent
   ],
   imports: [
     BrowserModule,

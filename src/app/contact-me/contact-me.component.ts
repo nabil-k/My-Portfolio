@@ -28,6 +28,8 @@ export class ContactMeComponent implements OnInit {
   tokens: any;
   token:any
   tokenObj:any = {"newToken":localStorage.getItem('authorization')};
+  messageSent:boolean;
+  userSubmitted:boolean;
 
   constructor(private dataService: DataService, private authService: AuthService) {
     this.dataService.getMessages()
@@ -36,22 +38,27 @@ export class ContactMeComponent implements OnInit {
         console.log("got messages")
       });
       console.log(this.tokenObj)
-      this.authService.checkToken(this.tokenObj).subscribe(token => this.tokens.push(token))
+      this.authService.checkToken(this.tokenObj).subscribe()
     
   }
 
   onSubmit(){
-    this.newMsg = { 
-      name: this.userName,
-      email:this.userEmail, 
-      phoneNumber: this.userPhoneNum, 
-      date: this.date, 
-      message: this.userMsg 
-    }
+      this.userSubmitted = true
+      this.newMsg = { 
+        name: this.userName,
+        email:this.userEmail, 
+        phoneNumber: this.userPhoneNum, 
+        date: this.date, 
+        message: this.userMsg 
+      }
+      console.log(this.newMsg)
+      if(this.newMsg.name === undefined || this.newMsg.email === undefined || this.newMsg.phoneNumber === undefined || this.newMsg.message === undefined){
+        this.messageSent = false
+      }else{
+        //this.dataService.sendMessages(this.newMsg).subscribe()
+        this.messageSent = true
+      }
 
-    console.log(this.newMsg)
-    this.dataService.sendMessages(this.newMsg)
-      .subscribe(message => this.messages.push(message))
     }
 
 

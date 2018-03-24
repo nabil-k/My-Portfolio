@@ -1,3 +1,30 @@
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+-webkit-animation-name: fadeIn;
+animation-name: fadeIn;
+}
+
+
+
 #formDiv{
     padding-top:2%;
     width: 500px;
@@ -29,4 +56,31 @@
     background-color:#c02323;
     border-color:#c02323;
     cursor:pointer;
+}
+#successAlert{
+    animation:fadeIn;
+    animation-duration: 2s;
+    display:block;
+    margin:auto;
+    text-align:center;
+    width: 500px;
+    background-color: #18b447;
+    padding: 10px;
+    color: #fff;
+    border: 1px solid #18b447;
+    border-radius: 15px;
+}
+
+#failureAlert{
+    animation:fadeIn;
+    animation-duration: 2s;
+    display:block;
+    margin:auto;
+    text-align:center;
+    width: 500px;
+    background-color: #b41818;
+    padding: 10px;
+    color: #fff;
+    border: 1px solid #b41818;
+    border-radius: 15px;
 }
