@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'contactMe', component: ContactMeComponent },
   { path: 'LoL-Stats', component: LolstatsComponent },
   { path: 'admin/login', component: AdminLoginComponent },
-  { path: 'blog', component: BlogComponent },
+  { path: 'blog/:id', component: BlogComponent},
   {
     path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard],
     children: [
