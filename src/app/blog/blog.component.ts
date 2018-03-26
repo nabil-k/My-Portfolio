@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../_services/data.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 
 
 interface BlogType{
@@ -11,6 +11,7 @@ interface BlogType{
   created:string;
   comments:string[];
 }
+
 class Blog{
   _id:string;
   title:string;
@@ -35,54 +36,63 @@ class Blog{
 })
 
 export class BlogComponent implements OnInit {
-
-  blogPosts:any;
+  
+  blogIds:any[];
+  blogId:any;
   currentBlogPost:any;
+  comment:any;
   blogComments:any;
   userComment:any;
-  newComment:any;
-  carouselCounter:number = 0;
+  discussionId:any
+  showCommentReplies:boolean = false;
 
-  constructor(private dataService: DataService, private router: Router) { 
+  constructor(private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute) { 
 
   }
+  
+  submitComment(currentBlogId){
 
-  // Allows user to scroll through other blogs
-  previousBlog(){
-    this.carouselCounter -= 1;
-    this.currentBlogPost = new Blog(this.blogPosts[this.carouselCounter])
-    console.log(this.carouselCounter)
-    console.log(this.currentBlogPost._id)
-    this.router.navigateByUrl('blog/'+this.currentBlogPost._id);
+    this.comment ={content:this.userComment, discussionId:currentBlogId}
+    console.log(this.comment)
+    this.dataService.postComment(this.comment).subscribe((data)=>{
+      console.log(currentBlogId)
+    }) 
   }
-  nextBlog(){
-    this.carouselCounter += 1;
-    this.currentBlogPost = new Blog(this.blogPosts[this.carouselCounter])
-    console.log(this.carouselCounter)
-    console.log(this.currentBlogPost._id)
-    this.router.navigateByUrl('blog/'+this.currentBlogPost._id);
+  loadBlog(){
+    this.dataService.getBlogPostById(this.blogId).subscribe((blogContent)=>{
+      this.currentBlogPost = blogContent.blog[0]
+      console.log("current blog content",this.currentBlogPost)
+    })
+    this.dataService.getComments(this.discussionId).subscribe((comments)=>{
+      this.blogComments = comments.comments
+      console.log("current blog comments",this.blogComments)
+    })
   }
-
-  // Submits Comment
-  submitComment(blogId){
-    console.log(this.userComment)
-    this.newComment = {
-      "_id":blogId,
-      "comment":this.userComment
-    }
-    console.log(blogId)
-    this.dataService.postComment(this.newComment).subscribe()
+  showReplies(){
+    this.showCommentReplies = true
+    console.log("showCommentReplies", this.showCommentReplies)
   }
 
   ngOnInit() {
-    this.dataService.getBlogPosts()
-    .subscribe((data) => {
-      this.blogPosts = data
-      this.currentBlogPost = this.blogPosts[this.carouselCounter]
-      console.log(this.currentBlogPost)
-      console.log(this.blogPosts)
-      this.router.navigateByUrl('blog/'+this.currentBlogPost._id);
-    });
+    // Gets all of the blog Ids
+    this.blogId = {_id:this.activatedRoute.snapshot.params['id']}
+    this.discussionId = {discussionId:this.activatedRoute.snapshot.params['id']}
+    console.log(this.blogId)
+    this.dataService.getAllBlogPostsIds().subscribe((allBlogIds)=>{
+      this.blogIds = allBlogIds
+      console.log(this.blogIds)
+      if (this.blogId._id === ":id"){
+        this.router.navigateByUrl('blog/'+this.blogIds[0]._id);
+        this.blogId = {_id:this.blogIds[0]._id}
+        this.discussionId = {discussionId:this.blogIds[0]._id}
+        console.log("true")
+        this.loadBlog()
+      }else{
+        this.loadBlog()
+      }
+    })
+
+
   }
 
 }

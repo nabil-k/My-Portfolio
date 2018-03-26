@@ -1,46 +1,59 @@
 <!-- Page Content -->
 <div class="container">
   <div class="row">
-    <button (click)="previousBlog()">Previous</button>  <button (click)="nextBlog()">Next</button>
     <!-- Post Content Column -->
     <div class="col-lg">
-        <!-- Title -->
-        <h1 class="mt-4">{{currentBlogPost?.title}}</h1>
-        <!-- Author -->
-        <p class="lead">
-          by
-          <a href="#">{{currentBlogPost?.author}}</a>
-        </p>
+      <!-- Title -->
+      <h1 class="mt-4">{{currentBlogPost?.title}}</h1>
+      <!-- Author -->
+      <p class="lead">
+        by
+        <a href="#">{{currentBlogPost?.author}}</a>
+      </p>
 
-        <hr>
-        <!-- Date/Time -->
-        <p>{{currentBlogPost?.created}}</p>
-        <hr>
-        <!-- Post Content -->
-        <p>{{currentBlogPost?.content}}</p>
-        <hr>
-        <!-- Comments Form -->
-        <div class="card my-4">
-          <h5 class="card-header">Leave a Comment:</h5>
-          <div class="card-body">
-            <form (ngSubmit)="submitComment(currentBlogPost._id)">
-              <div class="form-group">
-                <textarea [(ngModel)]="userComment" name="userComment" class="form-control" rows="3"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-          </div>
+      <hr>
+      <!-- Date/Time -->
+      <p>{{currentBlogPost?.created}}</p>
+      <hr>
+      <!-- Post Content -->
+      <p>{{currentBlogPost?.content}}</p>
+      <hr>
+      <!-- Comments Form -->
+      <div class="card my-4">
+        <h5 class="card-header">Leave a Comment:</h5>
+        <div class="card-body">
+          <form (ngSubmit)="submitComment(currentBlogPost._id)">
+            <div class="form-group">
+              <textarea [(ngModel)]="userComment" name="userComment" class="form-control" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
-        <!-- Single Comment -->
-        <div class="media mb-4">
-          <!-- <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""> -->
-          <div class="media-body">
-            <div *ngFor="let comments of currentBlogPost.comments">
+      </div>
+      <!-- Single Comment -->
+      <div class="media mb-4">
+        <div class="media-body">
+          <div *ngIf="blogComments">
+            <div *ngFor="let comment of blogComments">
               <h5 class="mt-0">Anonymous</h5>
-              <p>{{comments?.comment}}</p>
+              <p>{{comment.content}}</p>
+              <div *ngIf="comment.replies.length > 0">
+                <div *ngIf="showCommentReplies">
+                  <div *ngFor="let reply of comment.replies">
+                      <div class="media mt-4" style="margin-left:100px;">
+                          <div class="media-body">
+                              <h5 class="mt-0">Anonymous</h5>
+                              <p>{{reply.content}}</p>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+                <button (click)="showReplies()">view replies</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </div>

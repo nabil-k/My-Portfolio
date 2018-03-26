@@ -23,15 +23,26 @@ export class DataService {
     return this.http.post(baseUrl + "/routes/newMessages",message)
   }
 
-  getBlogPosts(){
-    return this.http.get(baseUrl + "/routes/blogPosts")
+  getAllBlogPostsIds(){
+    return this.http.get(baseUrl + "/routes/allBlogPostsIds")
     .map((result) =>{
       return result.json();
     });
   }
 
-  postComment(comment:string){
-    return this.http.put(baseUrl+"/routes/postComment", comment)
+  getBlogPostById(blogId:any){
+    return this.http.post(baseUrl + "/routes/getBlogPost",blogId)
+    .map((result)=>{
+      return result.json();
+    })
+  }
+
+  postComment(comment:any){
+    return this.http.post(baseUrl+"/routes/postComment", comment)
+  }
+
+  getComments(blogId:any){
+    return this.http.post(baseUrl + "/routes/getBlogComments",blogId)
     .map((result)=>{
       return result.json();
     })
