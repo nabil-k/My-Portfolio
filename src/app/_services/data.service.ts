@@ -41,6 +41,10 @@ export class DataService {
     return this.http.post(baseUrl+"/routes/postComment", comment)
   }
 
+  postReply(reply:any){
+    return this.http.post(baseUrl+"/routes/postReply", reply)
+  }
+
   getComments(blogId:any){
     return this.http.post(baseUrl + "/routes/getBlogComments",blogId)
     .map((result)=>{

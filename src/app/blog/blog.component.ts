@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild, ElementRef} from '@angular/core';
 import { DataService } from '../_services/data.service';
 import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
-
 
 interface BlogType{
   _id:string;
@@ -36,15 +35,17 @@ class Blog{
 })
 
 export class BlogComponent implements OnInit {
-  
+  isActive: boolean = false;
   blogIds:any[];
   blogId:any;
   currentBlogPost:any;
   comment:any;
   blogComments:any;
   userComment:any;
+  replyComment:any;
   discussionId:any
   showCommentReplies:boolean = false;
+  reply:any;
 
   constructor(private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute) { 
 
@@ -58,6 +59,31 @@ export class BlogComponent implements OnInit {
       console.log(currentBlogId)
     }) 
   }
+
+  submitReply(commentId){
+    this.reply = {
+      id:commentId, 
+      reply:{ 
+        content:this.replyComment
+      }
+    }
+    this.dataService.postReply(this.reply).subscribe((data)=>{
+      console.log(commentId)
+    }) 
+  }
+
+  createReply(comment){
+    comment.createReply = true
+  }
+
+  viewReply(comment){
+    if (comment.viewReply == true){
+      comment.viewReply = false
+    }else{
+      comment.viewReply = true
+    }
+  }
+  
   loadBlog(){
     this.dataService.getBlogPostById(this.blogId).subscribe((blogContent)=>{
       this.currentBlogPost = blogContent.blog[0]
@@ -68,10 +94,7 @@ export class BlogComponent implements OnInit {
       console.log("current blog comments",this.blogComments)
     })
   }
-  showReplies(){
-    this.showCommentReplies = true
-    console.log("showCommentReplies", this.showCommentReplies)
-  }
+
 
   ngOnInit() {
     // Gets all of the blog Ids

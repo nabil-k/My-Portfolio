@@ -38,17 +38,28 @@
               <h5 class="mt-0">Anonymous</h5>
               <p>{{comment.content}}</p>
               <div *ngIf="comment.replies.length > 0">
-                <div *ngIf="showCommentReplies">
-                  <div *ngFor="let reply of comment.replies">
-                      <div class="media mt-4" style="margin-left:100px;">
+                <div *ngIf="comment.viewReply">
+                    <div *ngFor="let reply of comment.replies">
+                        <div class="media mt-4" style="margin-left:100px;">
                           <div class="media-body">
-                              <h5 class="mt-0">Anonymous</h5>
-                              <p>{{reply.content}}</p>
+                            <h5 class="mt-0">Anonymous</h5>
+                            <p>{{reply.content}}</p>
                           </div>
                         </div>
-                  </div>
+                      </div>
                 </div>
-                <button (click)="showReplies()">view replies</button>
+                <button (click)="createReply(comment)">Reply</button>
+                  <div *ngIf="comment.createReply">
+                      <div class="card-body">
+                          <form (ngSubmit)="submitReply(comment._id)">
+                            <div class="form-group">
+                              <textarea [(ngModel)]="replyComment" name="replyComment" class="form-control" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
+                        </div>
+                  </div>
+                <button (click)="viewReply(comment)">view replies</button>
               </div>
             </div>
           </div>
